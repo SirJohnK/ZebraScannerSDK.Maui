@@ -8,12 +8,12 @@
     <license type="file">LICENSE.txt</license>
     <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
     <icon>sirjohnk.png</icon>
-    <projectUrl>https://github.com/SirJohnK/LocalizationResourceManager.Maui</projectUrl>
+    <projectUrl>https://github.com/SirJohnK/ZebraScannerSDK.Maui</projectUrl>
     <description>Enhanced .NET MAUI version of the Zebra Scanner SDK for Xamarin.</description>
     <releaseNotes>- Initial pre release version.</releaseNotes>
     <copyright>© 2023 Johan Svensson All Rights Reserved</copyright>
     <tags>dotnet,dotnetmaui,zebra,scanner,sdk</tags>
-    <repository url="https://github.com/SirJohnK/LocalizationResourceManager.Maui" />
+    <repository url="https://github.com/SirJohnK/ZebraScannerSDK.Maui" />
     <dependencies>
       <group targetFramework="net7.0-android33.0">
         <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="7.0.0" exclude="Build,Analyzers" />
