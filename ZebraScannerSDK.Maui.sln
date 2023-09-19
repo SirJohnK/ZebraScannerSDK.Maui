@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Droid.ZebraScannerSDK.Binding", "Droid.ZebraScannerSDK.Binding\Droid.ZebraScannerSDK.Binding.csproj", "{77FA9E97-8F92-4AD2-A78D-E7FB842832F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZebraScannerSDK.Maui", "ZebraScannerSDK.Maui\ZebraScannerSDK.Maui.csproj", "{AD2797D2-E03C-4F3A-A834-6A954D23582F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZebraScannerSDK.Maui.Sample", "ZebraScannerSDK.Maui.Sample\ZebraScannerSDK.Maui.Sample.csproj", "{EF1A51F0-2EA3-4B10-9F2B-AAFE2E781591}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iOS.ZebraScannerSDK.Binding", "iOS.ZebraScannerSDK.Binding\iOS.ZebraScannerSDK.Binding.csproj", "{BD024DA9-56AC-4413-A376-D259C2090D9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77FA9E97-8F92-4AD2-A78D-E7FB842832F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77FA9E97-8F92-4AD2-A78D-E7FB842832F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77FA9E97-8F92-4AD2-A78D-E7FB842832F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77FA9E97-8F92-4AD2-A78D-E7FB842832F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2797D2-E03C-4F3A-A834-6A954D23582F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2797D2-E03C-4F3A-A834-6A954D23582F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2797D2-E03C-4F3A-A834-6A954D23582F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2797D2-E03C-4F3A-A834-6A954D23582F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1A51F0-2EA3-4B10-9F2B-AAFE2E781591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1A51F0-2EA3-4B10-9F2B-AAFE2E781591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1A51F0-2EA3-4B10-9F2B-AAFE2E781591}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EF1A51F0-2EA3-4B10-9F2B-AAFE2E781591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1A51F0-2EA3-4B10-9F2B-AAFE2E781591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1A51F0-2EA3-4B10-9F2B-AAFE2E781591}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BD024DA9-56AC-4413-A376-D259C2090D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD024DA9-56AC-4413-A376-D259C2090D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD024DA9-56AC-4413-A376-D259C2090D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD024DA9-56AC-4413-A376-D259C2090D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B723E07A-04D1-43E0-9C3A-73CD8ADEB36F}
+	EndGlobalSection
+EndGlobal

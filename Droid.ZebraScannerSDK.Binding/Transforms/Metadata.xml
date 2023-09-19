@@ -1,0 +1,23 @@
+﻿<metadata>
+  <!-- Rename com.zebra.barcode.sdk -->
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='AuxiliaryDeviceStatusEventArgs']" name="managedName">AuxiliaryDeviceStatusArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='BarcodeDataEventArgs']" name="managedName">BarcodeDataArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='BinaryDataEventArgs']" name="managedName">BinaryDataArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='FirmwareUpdateEventArgs']" name="managedName">FirmwareUpdateArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='ImageEventArgs']" name="managedName">ImageArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='ScannerAppearedEventArgs']" name="managedName">ScannerAppearedArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='ScannerConnectedEventArgs']" name="managedName">ScannerConnectedArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='ScannerDisappearedEventArgs']" name="managedName">ScannerDisappearedArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='ScannerDisconnectedEventArgs']" name="managedName">ScannerDisconnectedArgs</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='VideoEventArgs']" name="managedName">VideoArgs</attr>
+
+  <!-- Rename com.zebra.barcode.sdk.sms -->
+  <attr path="/api/package[@name='com.zebra.barcode.sdk.sms']/class[@name='ConfigurationUpdateEventArgs']" name="managedName">ConfigurationUpdateArgs</attr>
+
+  <!-- Include com.zebra.barcode.sdk -->
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='BluetoothLeScannerManager']" name="visibility">public</attr>
+  <attr path="/api/package[@name='com.zebra.barcode.sdk']/class[@name='LegacySdkProxy']" name="visibility">public</attr>
+
+  <!-- Include com.zebra.barcode.scannercontrol -->
+  <attr path="/api/package[@name='com.zebra.scannercontrol']/class[@name='RSMAttribute']" name="visibility">public</attr>
+</metadata>

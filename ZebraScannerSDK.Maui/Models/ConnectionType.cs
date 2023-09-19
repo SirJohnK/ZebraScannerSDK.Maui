@@ -1,0 +1,11 @@
+﻿namespace ZebraBarcodeScannerSDK;
+
+public enum ConnectionType
+{
+    CONNECTION_TYPE_MFI = 1,
+    CONNECTION_TYPE_BTLE = 2,
+    CONNECTION_TYPE_MFI_BTLE = 3,
+    CONNECTION_TYPE_SSI = 4,
+    CONNECTION_TYPE_SNAPI = 5,
+    CONNECTION_TYPE_USB_CDC = 6,
+}
