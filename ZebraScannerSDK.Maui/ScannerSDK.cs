@@ -17,9 +17,6 @@ public class ScannerSDK : IScannerSDK
         try
         {
             appEngine = new AppEngine();
-            //#if IOS
-            //            appEngine.CreateSdkAppInstance();
-            //#endif
             appEngine.SetDelegate();
         }
         catch (Exception ex)
