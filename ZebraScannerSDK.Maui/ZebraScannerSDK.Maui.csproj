@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+    <TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>ZebraBarcodeScannerSDK</RootNamespace>
@@ -12,6 +12,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
 
+    <NuspecFile>ZebraScannerSDK.Maui.nuspec</NuspecFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,15 +20,15 @@
     <None Include="Platforms\**\*.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
     <Compile Include="Platforms\Android\**\*.cs" />
     <ProjectReference Include="..\Droid.ZebraScannerSDK.Binding\Droid.ZebraScannerSDK.Binding.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-ios'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
     <Compile Include="Platforms\iOS\**\*.cs" />
     <Reference Include="iOS.ZebraScannerSDK.Binding">
-      <HintPath>..\iOS.ZebraScannerSDK.Binding\bin\Release\net7.0-ios\iOS.ZebraScannerSDK.Binding.dll</HintPath>
+      <HintPath>..\iOS.ZebraScannerSDK.Binding\bin\Release\net9.0-ios\iOS.ZebraScannerSDK.Binding.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -47,6 +48,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
   </ItemGroup>
 </Project>

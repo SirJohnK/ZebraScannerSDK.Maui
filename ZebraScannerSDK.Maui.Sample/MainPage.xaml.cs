@@ -22,7 +22,9 @@ namespace ZebraScannerSDK.Maui.Sample
 
         private async void InitScannerManager()
         {
-            //await Permissions.RequestAsync<BluetoothConnectPermission>();
+#if ANDROID
+            await Permissions.RequestAsync<BluetoothConnectPermission>();
+#endif
             scannerSDK.ScannerManager.EnableAvailableScannersDetection(true);
             scannerSDK.ScannerManager.EnableBluetoothScannerDiscovery();
 
@@ -36,20 +38,25 @@ namespace ZebraScannerSDK.Maui.Sample
 
             scannerSDK.ScannerManager.SetSTCEnabledState(true);
 
-            //scannerSDK.ScannerManager.SetOperationMode(OpMode.OPMODE_SSI); //Android
+#if ANDROID
+            scannerSDK.ScannerManager.SetOperationMode(OpMode.OPMODE_SSI); //Android
+#endif
+#if IOS
             scannerSDK.ScannerManager.SetOperationMode(OpMode.OPMODE_MFI_BTLE); //iOS
+#endif
 
-            //scannerSDK.ScannerManager.EnableBluetoothScannerDiscovery();
-            //scannerSDK.ScannerManager.StartScanForTopologyChanges();
+            scannerSDK.ScannerManager.EnableBluetoothScannerDiscovery();
+            scannerSDK.ScannerManager.StartScanForTopologyChanges();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
+            var bc = scannerSDK.GetBluetoothPairingBarcode(PairingBarcodeType.BARCODE_TYPE_STC, BluetoothProtocol.SSI_BT_CRADLE_HOST, ScannerConfiguration.SET_FACTORY_DEFAULTS, "78:B8:D6:79:65:E7"); //Android
             //var bc = scannerSDK.GetBluetoothPairingBarcode(PairingBarcodeType.BARCODE_TYPE_STC, BluetoothProtocol.SSI_BT_CRADLE_HOST, ScannerConfiguration.SET_FACTORY_DEFAULTS, "A4:75:B9:D1:82:6D"); //Android
             //var bc = scannerSDK.GetBluetoothPairingBarcode(PairingBarcodeType.BARCODE_TYPE_STC, BluetoothProtocol.SSI_BT_MFI, ScannerConfiguration.SET_FACTORY_DEFAULTS, "FC:B6:D8:77:5A:95");
-            var bc = scannerSDK.GetBluetoothPairingBarcode(PairingBarcodeType.BARCODE_TYPE_STC, BluetoothProtocol.SSI_BT_LE, ScannerConfiguration.KEEP_CURRENT); //iOS
+            //var bc = scannerSDK.GetBluetoothPairingBarcode(PairingBarcodeType.BARCODE_TYPE_STC, BluetoothProtocol.SSI_BT_LE, ScannerConfiguration.KEEP_CURRENT); //iOS
             BotImage.Source = ImageSource.FromStream(() => new MemoryStream(bc));
             OnPropertyChanged(nameof(BotImage));
 
