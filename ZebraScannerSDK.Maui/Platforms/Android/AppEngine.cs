@@ -361,7 +361,7 @@ public class AppEngine : Java.Lang.Object, IDcsSdkApiDelegate, IJavaObject, IDis
         if (bitmapImage is null) return null;
 
         var memoryStream = new MemoryStream();
-        bitmapImage.Compress(Bitmap.CompressFormat.Png, 0, memoryStream);
+        bitmapImage.Compress(Bitmap.CompressFormat.Png!, 0, memoryStream);
         return memoryStream.ToArray();
     }
 

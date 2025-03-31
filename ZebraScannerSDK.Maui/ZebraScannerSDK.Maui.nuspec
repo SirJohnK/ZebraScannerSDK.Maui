@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ZebraScannerSDK.Maui</id>
-    <version>1.1.0-prerelease</version>
+    <version>1.1.0-prerelease.2</version>
     <title>ZebraScannerSDK.Maui</title>
     <authors>Johan Svensson, Zebra Technologies Corp.</authors>
     <license type="file">LICENSE.txt</license>
@@ -28,7 +28,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Droid.ZebraScannerSDK.Binding\bin\Release\net9.0-android\barcode_scanner_library_v2.6.23.0-release.aar" target="lib\net9.0-android35.0\barcode_scanner_library_v2.6.23.0-release.aar" />
+    <file src="..\Droid.ZebraScannerSDK.Binding\bin\Release\net9.0-android\barcode_scanner_library_v2.6.25.0-release.aar" target="lib\net9.0-android35.0\barcode_scanner_library_v2.6.25.0-release.aar" />
     <file src="..\Droid.ZebraScannerSDK.Binding\bin\Release\net9.0-android\Droid.ZebraScannerSDK.Binding.dll" target="lib\net9.0-android35.0\Droid.ZebraScannerSDK.Binding.dll" />
     <file src="bin\Release\net9.0-android\ZebraScannerSDK.Maui.dll" target="lib\net9.0-android35.0\ZebraScannerSDK.Maui.dll" />
     <file src="..\iOS.ZebraScannerSDK.Binding\bin\Release\net9.0-ios\iOS.ZebraScannerSDK.Binding.dll" target="lib\net9.0-ios16.1\iOS.ZebraScannerSDK.Binding.dll" />
