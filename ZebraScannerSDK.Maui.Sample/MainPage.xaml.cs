@@ -8,7 +8,7 @@ namespace ZebraScannerSDK.Maui.Sample
     {
         private int count = 0;
         private readonly IScannerSDK scannerSDK;
-        private Dictionary<int, Scanner> scanners = new();
+        private readonly Dictionary<int, Scanner> scanners = [];
 
         public ImageSource SetFactoryDefaultsBarcode => ImageSource.FromStream(() => ScannerSDK.SetFactoryDefaultsBarcode);
         public ImageSource HostTriggerEventModeEnabledBarcode => ImageSource.FromStream(() => ScannerSDK.HostTriggerEventModeEnabledBarcode);
@@ -29,9 +29,12 @@ namespace ZebraScannerSDK.Maui.Sample
 
         private async void InitScannerManager()
         {
-#if ANDROID
-            await Permissions.RequestAsync<BluetoothConnectPermission>();
-#endif
+            var status = await Permissions.CheckStatusAsync<Permissions.Bluetooth>();
+            if (status != PermissionStatus.Granted)
+            {
+                status = await Permissions.RequestAsync<Permissions.Bluetooth>();
+            }
+
             scannerSDK.ScannerManager.EnableAvailableScannersDetection(true);
             scannerSDK.ScannerManager.EnableBluetoothScannerDiscovery();
 
@@ -80,9 +83,8 @@ namespace ZebraScannerSDK.Maui.Sample
 
         private void ScannerManager_DisconnectedEvent(int scannerID)
         {
-            Scanner scanner;
             string message = $"Scanner Disconnected! (Scanner: {scannerID})";
-            if (scanners.TryGetValue(scannerID, out scanner))
+            if (scanners.TryGetValue(scannerID, out Scanner scanner))
             {
                 scanners.Remove(scannerID);
                 message = $"Scanner Disconnected! (Scanner: {scanner.Name} ({scanner.Id}))";
@@ -93,9 +95,8 @@ namespace ZebraScannerSDK.Maui.Sample
 
         private void ScannerManager_DisappearedEvent(int scannerID)
         {
-            Scanner scanner;
             string message = $"Scanner Disappeared! (Scanner: {scannerID})";
-            if (scanners.TryGetValue(scannerID, out scanner))
+            if (scanners.TryGetValue(scannerID, out Scanner scanner))
             {
                 scanners.Remove(scannerID);
                 message = $"Scanner Disappeared! (Scanner: {scanner.Name} ({scanner.Id}))";

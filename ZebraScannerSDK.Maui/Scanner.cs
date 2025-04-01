@@ -5,22 +5,8 @@ namespace ZebraBarcodeScannerSDK;
 
 public partial class Scanner
 {
-    private AppEngine appEngine;
-    private int id;
-    private ConnectionType connectionType;
-
-    private bool autoCommunicationSessionReestablishment;
-    private bool active;
-    private bool available;
-
-    private string? name;
-    private string? model;
-    private string? firmwareVersion;
-    private string? manufactureDate;
-    private string? serialNumber;
-    private string? scannerModelName;
-
-    private int maximumNonPrintableCharactorValue = 32;
+    private readonly AppEngine appEngine;
+    private readonly int maximumNonPrintableCharactorValue = 32;
 
     private readonly string xmlArgs = "<inArgs>";
     private readonly string xmlArgsEnd = "</inArgs>";
@@ -46,7 +32,7 @@ public partial class Scanner
     private readonly string constantSerialNumber = "serialnumber";
     private readonly string constantModelNumber = "modelnumber";
     private readonly string constantAttribute = "attribute";
-    private readonly string constantId = nameof(id);
+    private readonly string constantId = "id";
     private readonly string constantValue = "value";
     private readonly string constantFirmwareId = "20012";
     private readonly string constantDateOfManufacturedId = "535";
@@ -67,27 +53,27 @@ public partial class Scanner
     private readonly string STATUS_STABLE_ZERO_WEIGHT = "5";
     private readonly string STATUS_STABLE_NON_ZERO_WEIGHT = "6";
 
-    public int Id => id;
+    public int Id { get; }
 
-    public ConnectionType ConnectionType => connectionType;
+    public ConnectionType ConnectionType { get; }
 
-    public bool AutoCommunicationSessionReestablishment => autoCommunicationSessionReestablishment;
+    public bool AutoCommunicationSessionReestablishment { get; }
 
-    public bool Active => active;
+    public bool Active { get; }
 
-    public bool Available => available;
+    public bool Available { get; }
 
-    public string? Name => name;
+    public string? Name { get; }
 
-    public string? Model => model;
+    public string? Model { get; }
 
-    public string? FirmwareVersion => firmwareVersion;
+    public string? FirmwareVersion { get; }
 
-    public string? MFD => manufactureDate;
+    public string? MFD { get; }
 
-    public string? SerialNo => serialNumber;
+    public string? SerialNo { get; }
 
-    public string? ScannerModelString => scannerModelName;
+    public string? ScannerModelString { get; }
 
     public void Connect() => appEngine.ConnectScanner(Id);
 
@@ -95,9 +81,9 @@ public partial class Scanner
 
     public void EnableScannerAutoConnection(bool reconnection) => appEngine.EnableAutomaticSessionReestablishment(reconnection, Id);
 
-    public AssetInformation ScannerAssetInformation() => getAssetInformation(ExecuteCommand(OpCode.RSM_ATTRIBUTE_GET, xmlArgs + xmlScannerId + Id.ToString() + xmlScannerIdEnd + xmlCommandArgs + xmlArgsXml + xmlAttributeList + xmlAssertInformatiomnAttributes + xmlAttributeListEnd + xmlArgsXmlEnd + xmlCommandArgsEnd + xmlArgsEnd));
+    public AssetInformation ScannerAssetInformation() => GetAssetInformation(ExecuteCommand(OpCode.RSM_ATTRIBUTE_GET, xmlArgs + xmlScannerId + Id.ToString() + xmlScannerIdEnd + xmlCommandArgs + xmlArgsXml + xmlAttributeList + xmlAssertInformatiomnAttributes + xmlAttributeListEnd + xmlArgsXmlEnd + xmlCommandArgsEnd + xmlArgsEnd));
 
-    public WeightInfo ReadWeight() => getWeightInformation(ExecuteCommand(OpCode.SCALE_READ_WEIGHT, xmlArgs + xmlScannerId + Id.ToString() + xmlScannerIdEnd + xmlArgsEnd));
+    public WeightInfo ReadWeight() => GetWeightInformation(ExecuteCommand(OpCode.SCALE_READ_WEIGHT, xmlArgs + xmlScannerId + Id.ToString() + xmlScannerIdEnd + xmlArgsEnd));
 
     public string ZeroScale()
     {
@@ -145,7 +131,7 @@ public partial class Scanner
 
     public void DisableAllSymbologies() => ExecuteCommand(OpCode.RSM_ATTRIBUTE_SET, xmlArgs + xmlScannerId + Id.ToString() + xmlScannerIdEnd + xmlCommandArgs + xmlArgsXml + xmlAttributeList + xmlAttribute + xmlId + constantAllSimbologies + xmlIdEnd + xmlDataType + dataTypeAction + xmlDataTypeEnd + xmlValue + DISABLE_ALL_SYMBOLOGIES_TEMPORARY + xmlValueEnd + xmlAttributeEnd + xmlAttributeListEnd + xmlArgsXmlEnd + xmlCommandArgsEnd + xmlArgsEnd);
 
-    private AssetInformation getAssetInformation(string inXml)
+    private AssetInformation GetAssetInformation(string inXml)
     {
         string configuration = "";
         string scannerSerialNumber = "";
@@ -157,11 +143,11 @@ public partial class Scanner
         try
         {
             inXml = ReplaceNonPrintableCharacters(inXml);
-            foreach (XElement descendant in GenerateDocumentObj(inXml).Descendants((XName)constantSerialNumber))
+            foreach (XElement descendant in Scanner.GenerateDocumentObj(inXml).Descendants((XName)constantSerialNumber))
                 scannerSerialNumber = descendant.Value;
-            foreach (XElement descendant in GenerateDocumentObj(inXml).Descendants((XName)constantModelNumber))
+            foreach (XElement descendant in Scanner.GenerateDocumentObj(inXml).Descendants((XName)constantModelNumber))
                 model = descendant.Value;
-            foreach (XElement descendant in GenerateDocumentObj(inXml).Descendants((XName)constantAttribute))
+            foreach (XElement descendant in Scanner.GenerateDocumentObj(inXml).Descendants((XName)constantAttribute))
             {
                 if (descendant.Descendants((XName)constantId).First<XElement>().Value == constantFirmwareId)
                     firmware = descendant.Descendants((XName)constantValue).First<XElement>().Value;
@@ -172,7 +158,7 @@ public partial class Scanner
                 else if (descendant.Descendants((XName)constantId).First<XElement>().Value == constantBatteryPercentageId)
                 {
                     var value = descendant.Descendants((XName)constantValue).First<XElement>().Value;
-                    int.TryParse(value, out batteryPercentage);
+                    var parseStatus = int.TryParse(value, out batteryPercentage);
                 }
             }
         }
@@ -183,7 +169,7 @@ public partial class Scanner
         return new AssetInformation(configuration, scannerSerialNumber, model, firmware, scannerManufacturedDate, batteryPercentage);
     }
 
-    private WeightInfo getWeightInformation(string inXml)
+    private WeightInfo GetWeightInformation(string inXml)
     {
         string weightInfo = "0";
         string unitInfo = "";
@@ -191,7 +177,7 @@ public partial class Scanner
         try
         {
             inXml = ReplaceNonPrintableCharacters(inXml);
-            foreach (XElement descendant in GenerateDocumentObj(inXml).Descendants((XName)"response"))
+            foreach (XElement descendant in Scanner.GenerateDocumentObj(inXml).Descendants((XName)"response"))
             {
                 weightInfo = descendant.Descendants((XName)"weight").First<XElement>().Value;
                 unitInfo = descendant.Descendants((XName)"weight_mode").First<XElement>().Value;
@@ -221,7 +207,7 @@ public partial class Scanner
 
     private string ReplaceNonPrintableCharacters(string inputString)
     {
-        StringBuilder stringBuilder = new StringBuilder();
+        var stringBuilder = new StringBuilder();
         for (int index = 0; index < inputString.Length; ++index)
         {
             char ch = inputString[index];
@@ -231,5 +217,5 @@ public partial class Scanner
         return stringBuilder.ToString();
     }
 
-    private XDocument GenerateDocumentObj(string xmlString) => XDocument.Parse(xmlString);
+    private static XDocument GenerateDocumentObj(string xmlString) => XDocument.Parse(xmlString);
 }

@@ -3,22 +3,6 @@
 public class Scanners
 {
     private AppEngine appEngine;
-    private static int ANDROID_EVENT_BARCODE = 1;
-    private static int ANDROID_EVENT_IMAGE = 2;
-    private static int ANDROID_EVENT_VIDEO = 4;
-    private static int ANDROID_EVENT_BINARY_DATA = 8;
-    private static int ANDROID_EVENT_SCANNER_APPEARANCE = 16;
-    private static int ANDROID_EVENT_SCANNER_DISAPPEARANCE = 32;
-    private static int ANDROID_EVENT_SESSION_ESTABLISHMENT = 64;
-    private static int ANDROID_EVENT_SESSION_TERMINATION = 128;
-    private static int IOS_EVENT_BARCODE = 1;
-    private static int IOS_EVENT_IMAGE = 2;
-    private static int IOS_EVENT_VIDEO = 4;
-    private static int IOS_EVENT_SCANNER_APPEARANCE = 8;
-    private static int IOS_EVENT_SCANNER_DISAPPEARANCE = 16;
-    private static int IOS_EVENT_SESSION_ESTABLISHMENT = 32;
-    private static int IOS_EVENT_SESSION_TERMINATION = 64;
-    private static int IOS_EVENT_RAW_DATA = 128;
 
     public event ScannerAppearedEventHandler? Appeared;
 

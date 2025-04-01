@@ -1,10 +1,8 @@
-﻿using System.Reflection;
-
-namespace ZebraBarcodeScannerSDK;
+﻿namespace ZebraBarcodeScannerSDK;
 
 public class ScannerSDK : IScannerSDK
 {
-    private AppEngine appEngine;
+    private readonly AppEngine appEngine;
     private Scanners? scanners;
 
     private static IScannerSDK? implementationInstance;
@@ -16,16 +14,9 @@ public class ScannerSDK : IScannerSDK
 
     internal ScannerSDK()
     {
-        try
-        {
-            //Setup App Engine
-            appEngine = new AppEngine();
-            appEngine.SetDelegate();
-        }
-        catch (Exception ex)
-        {
-            throw;
-        }
+        //Setup App Engine
+        appEngine = new AppEngine();
+        appEngine.SetDelegate();
     }
 
     public Scanners ScannerManager => scanners ??= new Scanners(appEngine);

@@ -7,34 +7,22 @@ public partial class Scanner
     public Scanner(SbtScannerInfo scannerInfo, AppEngine appEngine)
     {
         this.appEngine = appEngine;
-        id = scannerInfo.ScannerID;
-        switch (scannerInfo.ConnectionType)
+        Id = scannerInfo.ScannerID;
+        ConnectionType = (object)scannerInfo.ConnectionType switch
         {
-            case 1:
-                connectionType = ConnectionType.CONNECTION_TYPE_MFI;
-                break;
-
-            case 2:
-                connectionType = ConnectionType.CONNECTION_TYPE_BTLE;
-                break;
-
-            case 3:
-                connectionType = ConnectionType.CONNECTION_TYPE_MFI_BTLE;
-                break;
-
-            default:
-                connectionType = ConnectionType.CONNECTION_TYPE_MFI_BTLE;
-                break;
-        }
-
-        autoCommunicationSessionReestablishment = scannerInfo.AutoCommunicationSessionReestablishment;
-        active = scannerInfo.IsActive;
-        available = scannerInfo.IsAvailable;
-        name = scannerInfo.ScannerName;
-        model = scannerInfo.ScannerModel.ToString();
-        firmwareVersion = scannerInfo.FirmwareVersion;
-        manufactureDate = scannerInfo.MFD;
-        serialNumber = scannerInfo.SerialNo;
-        scannerModelName = scannerInfo.ScannerModelString;
+            1 => ConnectionType.CONNECTION_TYPE_MFI,
+            2 => ConnectionType.CONNECTION_TYPE_BTLE,
+            3 => ConnectionType.CONNECTION_TYPE_MFI_BTLE,
+            _ => ConnectionType.CONNECTION_TYPE_MFI_BTLE,
+        };
+        AutoCommunicationSessionReestablishment = scannerInfo.AutoCommunicationSessionReestablishment;
+        Active = scannerInfo.IsActive;
+        Available = scannerInfo.IsAvailable;
+        Name = scannerInfo.ScannerName;
+        Model = scannerInfo.ScannerModel.ToString();
+        FirmwareVersion = scannerInfo.FirmwareVersion;
+        MFD = scannerInfo.MFD;
+        SerialNo = scannerInfo.SerialNo;
+        ScannerModelString = scannerInfo.ScannerModelString;
     }
 }

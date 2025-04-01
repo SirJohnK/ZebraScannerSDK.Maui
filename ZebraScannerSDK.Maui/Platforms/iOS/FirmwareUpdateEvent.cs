@@ -5,51 +5,37 @@ namespace ZebraBarcodeScannerSDK;
 public class FirmwareUpdateEvent
 {
     private AppEngine appEngine;
-    private Scanner? scannerInfo;
-    private FirmwareEventType eventType;
-    private int maxRecords;
-    private int softwareComponent;
-    private int currentRecord;
-    private int size;
-    private SDKResultCodes status;
 
     public FirmwareUpdateEvent(Symbolbtscannersdk.FirmwareUpdateEvent firmwareUpdate, AppEngine appEngine)
     {
         this.appEngine = appEngine;
         if (firmwareUpdate.ScannerInfo is not null)
-            scannerInfo = new Scanner(firmwareUpdate.ScannerInfo, this.appEngine);
+            ScannerInfo = new Scanner(firmwareUpdate.ScannerInfo, this.appEngine);
 
-        maxRecords = firmwareUpdate.MaxRecords;
-        softwareComponent = firmwareUpdate.SwComponent;
-        currentRecord = firmwareUpdate.CurrentRecord;
-        size = firmwareUpdate.Size;
-        switch (firmwareUpdate.Status)
+        MaxRecords = firmwareUpdate.MaxRecords;
+        SoftwareComponent = firmwareUpdate.SwComponent;
+        CurrentRecord = firmwareUpdate.CurrentRecord;
+        Size = firmwareUpdate.Size;
+
+        Status = (object)firmwareUpdate.Status switch
         {
-            case SbtFwUpdateResult.Success:
-                status = SDKResultCodes.RESULT_SUCCESS;
-                break;
-
-            case SbtFwUpdateResult.Failure:
-                status = SDKResultCodes.RESULT_FAILURE;
-                break;
-
-            default:
-                status = SDKResultCodes.RESULT_FAILURE;
-                break;
-        }
+            SbtFwUpdateResult.Success => SDKResultCodes.RESULT_SUCCESS,
+            SbtFwUpdateResult.Failure => SDKResultCodes.RESULT_FAILURE,
+            _ => SDKResultCodes.RESULT_FAILURE,
+        };
     }
 
-    public Scanner? ScannerInfo => scannerInfo;
+    public Scanner? ScannerInfo { get; }
 
-    public FirmwareEventType EventType => eventType;
+    public FirmwareEventType EventType { get; }
 
-    public int MaxRecords => maxRecords;
+    public int MaxRecords { get; }
 
-    public int SoftwareComponent => softwareComponent;
+    public int SoftwareComponent { get; }
 
-    public int CurrentRecord => currentRecord;
+    public int CurrentRecord { get; }
 
-    public int Size => size;
+    public int Size { get; }
 
-    public SDKResultCodes Status => status;
+    public SDKResultCodes Status { get; }
 }
