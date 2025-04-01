@@ -188,7 +188,7 @@ interface ISbtSdkApiDelegate
   protocol, then [Model] is redundant and will generate code that will never
   be used.
 */
-[Protocol, Model]
+[Protocol]
 [BaseType(typeof(NSObject))]
 interface ISbtSdkApi
 {
@@ -220,12 +220,12 @@ interface ISbtSdkApi
     // @required -(SBT_RESULT)sbtGetAvailableScannersList:(IntPtr **)availableScannersList;
     //[Abstract]
     [Export("sbtGetAvailableScannersList:")]
-    SbtResult SbtGetAvailableScannersList(out System.IntPtr availableScannersList);
+    SbtResult SbtGetAvailableScannersList(ref System.IntPtr availableScannersList);
 
     // @required -(SBT_RESULT)sbtGetActiveScannersList:(IntPtr **)activeScannersList;
     //[Abstract]
     [Export("sbtGetActiveScannersList:")]
-    SbtResult SbtGetActiveScannersList(out System.IntPtr activeScannersList);
+    SbtResult SbtGetActiveScannersList(ref System.IntPtr activeScannersList);
 
     // @required -(SBT_RESULT)sbtEstablishCommunicationSession:(int)scannerID;
     //[Abstract]
@@ -255,7 +255,7 @@ interface ISbtSdkApi
     // @required -(SBT_RESULT)sbtExecuteCommand:(int)opCode aInXML:(NSString *)inXML aOutXML:(System.IntPtr **)outXML forScanner:(int)scannerID;
     //[Abstract]
     [Export("sbtExecuteCommand:aInXML:aOutXML:forScanner:")]
-    SbtResult SbtExecuteCommand(int opCode, string inXML, out System.IntPtr outXML, int scannerID);
+    SbtResult SbtExecuteCommand(int opCode, string inXML, ref System.IntPtr outXML, int scannerID);
 
     // @required -(SBT_RESULT)sbtLedControl:(BOOL)enable aLedCode:(int)ledCode forScanner:(int)scannerID;
     //[Abstract]

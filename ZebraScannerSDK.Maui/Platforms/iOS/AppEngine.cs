@@ -73,7 +73,7 @@ public class AppEngine : ISbtSdkApiDelegate
     internal List<Scanner> GetAvailableScannerList()
     {
         var availableScanners = new NSMutableArray().Handle.Handle;
-        SbtResult? sbtResult = scannerApi?.SbtGetAvailableScannersList(out availableScanners);
+        SbtResult? sbtResult = scannerApi?.SbtGetAvailableScannersList(ref availableScanners);
         if (!(sbtResult?.ToString().Equals(STATUS_SUCCESS) ?? false))
             throw new Exception(sbtResult?.ToString());
 
@@ -90,7 +90,7 @@ public class AppEngine : ISbtSdkApiDelegate
     internal List<Scanner> GetActiveScannerList()
     {
         var activeScanners = new NSMutableArray().Handle.Handle;
-        var sbtResult = scannerApi?.SbtGetActiveScannersList(out activeScanners);
+        var sbtResult = scannerApi?.SbtGetActiveScannersList(ref activeScanners);
         if (!(sbtResult?.ToString().Equals(STATUS_SUCCESS) ?? false))
             throw new Exception(sbtResult?.ToString());
 
@@ -121,7 +121,7 @@ public class AppEngine : ISbtSdkApiDelegate
     internal string ExecuteCommand(OpCode opCode, string inXml, int scannerID)
     {
         var outXML = new NSMutableString().Handle.Handle;
-        SbtResult sbtResult = scannerApi?.SbtExecuteCommand((int)opCode, inXml, out outXML, scannerID) ?? SbtResult.Failure;
+        SbtResult sbtResult = scannerApi?.SbtExecuteCommand((int)opCode, inXml, ref outXML, scannerID) ?? SbtResult.Failure;
         if (!sbtResult.ToString().Equals(STATUS_SUCCESS))
             throw new Exception(sbtResult.ToString());
 
@@ -258,7 +258,7 @@ public class AppEngine : ISbtSdkApiDelegate
                 throw new Exception("ScannerConfiguration not supported");
         }
 
-        return scannerApi?.SbtGetPairingBarcode(barcodeType, comProtocol, setDefaultsStatus, bluetoothMAC, imageFrame ?? new CGRect(0f, 0f, 340f, 250f)).AsPNG().ToArray();
+        return scannerApi?.SbtGetPairingBarcode(barcodeType, comProtocol, setDefaultsStatus, bluetoothMAC, imageFrame ?? new CGRect(0f, 0f, 340f, 250f)).AsPNG()?.ToArray();
     }
 
     internal byte[]? GetBluetoothPairingBarcode(
@@ -320,7 +320,7 @@ public class AppEngine : ISbtSdkApiDelegate
                 throw new Exception("ScannerConfiguration not supported");
         }
 
-        return scannerApi?.SbtGetPairingBarcode(barcodeType, comProtocol, setDefaultsStatus, imageFrame ?? new CGRect(0f, 0f, 340f, 250f)).AsPNG().ToArray();
+        return scannerApi?.SbtGetPairingBarcode(barcodeType, comProtocol, setDefaultsStatus, imageFrame ?? new CGRect(0f, 0f, 340f, 250f)).AsPNG()?.ToArray();
     }
 
     internal byte[] GetUSBSNAPIWithImagingBarcode() => throw new Exception("Not supported");

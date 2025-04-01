@@ -27,13 +27,23 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
     <Compile Include="Platforms\iOS\**\*.cs" />
-    <Reference Include="iOS.ZebraScannerSDK.Binding">
-      <HintPath>..\iOS.ZebraScannerSDK.Binding\bin\Release\net9.0-ios\iOS.ZebraScannerSDK.Binding.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\iOS.ZebraScannerSDK.Binding\iOS.ZebraScannerSDK.Binding.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ZebraScannerSDK.Maui.*.nupkg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AndroidResource Remove="Resources\Images\zebra_host_trigger_event_mode_disabled.png" />
+    <AndroidResource Remove="Resources\Images\zebra_host_trigger_event_mode_enabled.png" />
+    <AndroidResource Remove="Resources\Images\zebra_set_factory_defaults.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\zebra_host_trigger_event_mode_disabled.png" />
+    <EmbeddedResource Include="Resources\Images\zebra_host_trigger_event_mode_enabled.png" />
+    <EmbeddedResource Include="Resources\Images\zebra_set_factory_defaults.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +58,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
   </ItemGroup>
 </Project>

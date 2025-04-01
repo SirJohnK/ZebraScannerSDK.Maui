@@ -12,6 +12,7 @@
     <description>Enhanced .NET MAUI version of the Zebra Scanner SDK for Xamarin.</description>
     <releaseNotes>
       - Upgrade native libraries
+      - Add Zebra Scanner Configuration Barcodes
       - Upgrade to .NET 9
     </releaseNotes>
     <copyright>© 2025 Johan Svensson All Rights Reserved</copyright>
@@ -19,11 +20,11 @@
     <repository url="https://github.com/SirJohnK/ZebraScannerSDK.Maui" />
     <dependencies>
       <group targetFramework="net9.0-android35.0">
-        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="9.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="9.0.3" exclude="Build,Analyzers" />
         <dependency id="Xamarin.AndroidX.Lifecycle.Common" version="2.8.7.2" exclude="Build,Analyzers" />
       </group>
-      <group targetFramework="net9.0-ios16.1">
-        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="9.0.2" exclude="Build,Analyzers" />
+      <group targetFramework="net9.0-ios18.0">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="9.0.3" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
@@ -31,8 +32,9 @@
     <file src="..\Droid.ZebraScannerSDK.Binding\bin\Release\net9.0-android\barcode_scanner_library_v2.6.25.0-release.aar" target="lib\net9.0-android35.0\barcode_scanner_library_v2.6.25.0-release.aar" />
     <file src="..\Droid.ZebraScannerSDK.Binding\bin\Release\net9.0-android\Droid.ZebraScannerSDK.Binding.dll" target="lib\net9.0-android35.0\Droid.ZebraScannerSDK.Binding.dll" />
     <file src="bin\Release\net9.0-android\ZebraScannerSDK.Maui.dll" target="lib\net9.0-android35.0\ZebraScannerSDK.Maui.dll" />
-    <file src="..\iOS.ZebraScannerSDK.Binding\bin\Release\net9.0-ios\iOS.ZebraScannerSDK.Binding.dll" target="lib\net9.0-ios16.1\iOS.ZebraScannerSDK.Binding.dll" />
-    <file src="bin\Release\net9.0-ios\ZebraScannerSDK.Maui.dll" target="lib\net9.0-ios16.1\ZebraScannerSDK.Maui.dll" />
+    <file src="..\iOS.ZebraScannerSDK.Binding\bin\Release\net9.0-ios\iOS.ZebraScannerSDK.Binding.resources\**" target="lib\net9.0-ios18.0\iOS.ZebraScannerSDK.Binding.resources" />
+    <file src="..\iOS.ZebraScannerSDK.Binding\bin\Release\net9.0-ios\iOS.ZebraScannerSDK.Binding.dll" target="lib\net9.0-ios18.0\iOS.ZebraScannerSDK.Binding.dll" />
+    <file src="bin\Release\net9.0-ios\ZebraScannerSDK.Maui.dll" target="lib\net9.0-ios18.0\ZebraScannerSDK.Maui.dll" />
     <file src="..\LICENSE.txt" target="\LICENSE.txt" />
     <file src="..\sirjohnk.png" target="\sirjohnk.png" />
   </files>

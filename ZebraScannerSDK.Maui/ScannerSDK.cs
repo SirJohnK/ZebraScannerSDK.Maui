@@ -1,4 +1,6 @@
-﻿namespace ZebraBarcodeScannerSDK;
+﻿using System.Reflection;
+
+namespace ZebraBarcodeScannerSDK;
 
 public class ScannerSDK : IScannerSDK
 {
@@ -16,10 +18,8 @@ public class ScannerSDK : IScannerSDK
     {
         try
         {
+            //Setup App Engine
             appEngine = new AppEngine();
-            //#if IOS
-            //            appEngine.CreateSdkAppInstance();
-            //#endif
             appEngine.SetDelegate();
         }
         catch (Exception ex)
@@ -52,4 +52,8 @@ public class ScannerSDK : IScannerSDK
     }
 
     public byte[]? GetSNAPIUSBBarcodeWithImage() => appEngine.GetUSBSNAPIWithImagingBarcode();
+
+    public static Stream? SetFactoryDefaultsBarcode => typeof(ScannerSDK).Assembly.GetManifestResourceStream("ZebraBarcodeScannerSDK.Resources.Images.zebra_set_factory_defaults.png");
+    public static Stream? HostTriggerEventModeEnabledBarcode => typeof(ScannerSDK).Assembly.GetManifestResourceStream("ZebraBarcodeScannerSDK.Resources.Images.zebra_host_trigger_event_mode_enabled.png");
+    public static Stream? HostTriggerEventModeDisabledBarcode => typeof(ScannerSDK).Assembly.GetManifestResourceStream("ZebraBarcodeScannerSDK.Resources.Images.zebra_host_trigger_event_mode_disabled.png");
 }

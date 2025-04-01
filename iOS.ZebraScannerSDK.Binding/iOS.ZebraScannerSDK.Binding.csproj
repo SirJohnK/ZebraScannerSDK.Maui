@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0-ios</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <NoBindingEmbedding>false</NoBindingEmbedding>
+    <NoBindingEmbedding>true</NoBindingEmbedding>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,11 +13,9 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="libsymbolbt-sdk.a">
-      <Kind>Static</Kind>
-      <ForceLoad>True</ForceLoad>
-      <SmartLink>True</SmartLink>
-      <Frameworks></Frameworks>
+    <NativeReference Include="..\Reference\iOS Lib\ZebraScannerSDK.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
 </Project>

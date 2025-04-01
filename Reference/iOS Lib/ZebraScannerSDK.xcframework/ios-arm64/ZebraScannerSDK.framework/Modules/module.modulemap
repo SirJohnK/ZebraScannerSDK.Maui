@@ -1,0 +1,6 @@
+framework module ZebraScannerSDK {
+  umbrella header "ZebraScannerSDK.h"
+  export *
+
+  module * { export * }
+}

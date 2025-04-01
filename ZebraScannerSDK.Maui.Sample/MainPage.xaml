@@ -2,13 +2,33 @@
 <ContentPage
     x:Class="ZebraScannerSDK.Maui.Sample.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:scanner="clr-namespace:ZebraBarcodeScannerSDK;assembly=ZebraScannerSDK.Maui"
+    BackgroundColor="White">
+
+    <Shell.TitleView>
+        <Label
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="{Binding Title}"
+            TextColor="Red" />
+    </Shell.TitleView>
 
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25"
             VerticalOptions="Center">
+
+            <Image
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="{Binding SetFactoryDefaultsBarcode}" />
+
+            <Image
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="{Binding HostTriggerEventModeDisabledBarcode}" />
 
             <Image
                 x:Name="BotImage"
@@ -22,14 +42,16 @@
                 FontSize="32"
                 HorizontalOptions="Center"
                 SemanticProperties.HeadingLevel="Level1"
-                Text="Hello, World!" />
+                Text="Hello, World!"
+                TextColor="Black" />
 
             <Label
                 FontSize="18"
                 HorizontalOptions="Center"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 SemanticProperties.HeadingLevel="Level2"
-                Text="Welcome to .NET Multi-platform App UI" />
+                Text="Welcome to .NET Multi-platform App UI"
+                TextColor="Black" />
 
             <Button
                 x:Name="CounterBtn"
