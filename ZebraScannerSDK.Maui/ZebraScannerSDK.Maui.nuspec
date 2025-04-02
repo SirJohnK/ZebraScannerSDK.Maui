@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ZebraScannerSDK.Maui</id>
-    <version>1.1.0-prerelease.3</version>
+    <version>1.1.0-prerelease.4</version>
     <title>ZebraScannerSDK.Maui</title>
     <authors>Johan Svensson, Zebra Technologies Corp.</authors>
     <license type="file">LICENSE.txt</license>
