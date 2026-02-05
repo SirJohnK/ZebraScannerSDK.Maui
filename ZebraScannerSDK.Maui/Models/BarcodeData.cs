@@ -47,6 +47,10 @@ public class BarcodeData
                 this.type = "I2OF5";
                 break;
 
+            case 7:
+                this.type = "CODE 93";
+                break;
+
             case 8:
                 this.type = "UPCA";
                 break;
