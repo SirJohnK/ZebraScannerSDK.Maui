@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ZebraScannerSDK.Maui</id>
-    <version>1.1.0-prerelease.5</version>
+    <version>1.1.0</version>
     <title>ZebraScannerSDK.Maui</title>
     <authors>Johan Svensson, Zebra Technologies Corp.</authors>
     <license type="file">LICENSE.txt</license>
@@ -10,7 +10,12 @@
     <icon>sirjohnk.png</icon>
     <projectUrl>https://github.com/SirJohnK/ZebraScannerSDK.Maui</projectUrl>
     <description>Enhanced .NET MAUI version of the Zebra Scanner SDK for Xamarin.</description>
-    <releaseNotes>- Add Code 93 format support.</releaseNotes>
+    <releaseNotes>- Initial Release
+- Native Android library. (v2.6.25.0, Android 13, 14, 15)
+- Native iOS library. (v1.4.44, iOS 16.x, 17.x, 18.x)
+- Zebra Scanner Configuration Barcodes for iOS
+- .NET 9 (net9.0-android and net9.0-ios)
+    </releaseNotes>
     <copyright>© 2026 Johan Svensson All Rights Reserved</copyright>
     <tags>dotnet,dotnetmaui,zebra,scanner,sdk</tags>
     <repository url="https://github.com/SirJohnK/ZebraScannerSDK.Maui" />

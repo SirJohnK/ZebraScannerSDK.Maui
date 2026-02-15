@@ -1,14 +1,28 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ZebraScannerSDK.Maui.Sample"
-             x:Class="ZebraScannerSDK.Maui.Sample.App">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="ZebraScannerSDK.Maui.Sample.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:ZebraScannerSDK.Maui.Sample"
+    xmlns:local="clr-namespace:ZebraScannerSDK.Maui.Sample">
+
     <Application.Resources>
         <ResourceDictionary>
+            <!--  Styles  -->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Red" />
+            </Style>
+            <Style x:Key="ValidEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Green" />
+            </Style>
+
+            <!--  Converters  -->
+            <app:MacAddressConverter x:Key="MacAddressConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

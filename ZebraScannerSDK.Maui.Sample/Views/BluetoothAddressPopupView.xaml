@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="ZebraScannerSDK.Maui.Sample.BluetoothAddressPopupView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:ZebraScannerSDK.Maui.Sample"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Margin="0"
+    x:DataType="app:BluetoothAddressPopupViewModel"
+    x:TypeArguments="system:String"
+    CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <Grid
+        Margin="0"
+        Padding="0"
+        ColumnDefinitions="*"
+        HorizontalOptions="Fill"
+        RowDefinitions="Auto, Auto, Auto"
+        RowSpacing="10"
+        VerticalOptions="Fill">
+
+        <Label
+            Grid.Row="0"
+            FontSize="Medium"
+            Text="Bluetooth address"
+            TextColor="Black" />
+
+        <Entry
+            x:Name="BluetoothAddress"
+            Grid.Row="1"
+            FontSize="Medium"
+            MaxLength="17"
+            Placeholder="1A:2B:3C:4D:5E:6F"
+            PlaceholderColor="DarkGray"
+            ReturnCommand="{Binding OkButtonCommand}"
+            Text="{Binding BluetoothAddress, Mode=TwoWay}"
+            TextTransform="Uppercase">
+            <Entry.Behaviors>
+                <toolkit:MaskedBehavior Mask="XX:XX:XX:XX:XX:XX" />
+                <toolkit:TextValidationBehavior
+                    Flags="ValidateOnValueChanged"
+                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                    RegexPattern="^([0-9a-fA-F]{2}):?([0-9a-fA-F]{2}):?([0-9a-fA-F]{2}):?([0-9a-fA-F]{2}):?([0-9a-fA-F]{2}):?([0-9a-fA-F]{2})$"
+                    ValidStyle="{StaticResource ValidEntryStyle}" />
+            </Entry.Behaviors>
+        </Entry>
+
+        <Grid
+            Grid.Row="2"
+            Grid.Column="0"
+            ColumnDefinitions="*,*"
+            ColumnSpacing="5">
+            <Button
+                x:Name="CancelButton"
+                Grid.Column="0"
+                Padding="10"
+                Command="{Binding CancelButtonCommand}"
+                CornerRadius="10"
+                Text="Cancel" />
+
+            <Button
+                x:Name="OkButton"
+                Grid.Column="1"
+                Padding="10"
+                Command="{Binding OkButtonCommand}"
+                CornerRadius="10"
+                IsEnabled="{Binding IsAddressValid}"
+                Text="Ok" />
+        </Grid>
+    </Grid>
+</toolkit:Popup>

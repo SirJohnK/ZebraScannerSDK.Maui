@@ -6,9 +6,6 @@
     xmlns:local="clr-namespace:ZebraScannerSDK.Maui.Sample"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent ContentTemplate="{DataTemplate local:MainView}" Route="MainView" />
 
 </Shell>

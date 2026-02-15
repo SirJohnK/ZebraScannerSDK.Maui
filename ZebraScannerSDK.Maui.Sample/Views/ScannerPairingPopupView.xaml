@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="ZebraScannerSDK.Maui.Sample.ScannerPairingPopupView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:ZebraScannerSDK.Maui.Sample"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Margin="0"
+    x:DataType="app:ScannerPairingPopupViewModel"
+    x:TypeArguments="app:IZebraScanner"
+    CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <Grid
+        Margin="0"
+        Padding="0"
+        ColumnDefinitions="Auto, *"
+        HorizontalOptions="Fill"
+        RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+        RowSpacing="10"
+        VerticalOptions="Fill">
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            HorizontalOptions="Center"
+            Text="Scanner"
+            TextColor="Black" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            FontSize="Small"
+            HorizontalOptions="Center"
+            Text="Scan barcodes and wait for connection."
+            TextColor="Black" />
+
+        <Image
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalOptions="Center"
+            VerticalOptions="Start">
+            <Image.Source>
+                <FontImageSource
+                    FontFamily="MaterialFontFamily"
+                    Glyph="{x:Static app:MaterialDesignIcons.Numeric1CircleOutline}"
+                    Size="40"
+                    Color="Black" />
+            </Image.Source>
+        </Image>
+
+        <VerticalStackLayout
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="0"
+            Padding="0">
+            <Image
+                Aspect="Fill"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                Source="{Binding SetFactoryDefaultsBarcode}" />
+
+            <Label
+                FontSize="Micro"
+                HorizontalOptions="Center"
+                Text="Set factory defaults"
+                TextColor="DarkGray" />
+        </VerticalStackLayout>
+
+        <Image
+            Grid.Row="3"
+            Grid.Column="0"
+            HorizontalOptions="Center"
+            IsVisible="{OnPlatform Android=False,
+                                   iOS=True}"
+            VerticalOptions="Start">
+            <Image.Source>
+                <FontImageSource
+                    FontFamily="MaterialFontFamily"
+                    Glyph="{x:Static app:MaterialDesignIcons.Numeric2CircleOutline}"
+                    Size="40"
+                    Color="Black" />
+            </Image.Source>
+        </Image>
+
+        <VerticalStackLayout
+            Grid.Row="3"
+            Grid.Column="2"
+            Margin="0"
+            Padding="0"
+            IsVisible="{OnPlatform Android=False,
+                                   iOS=True}">
+            <Image
+                Aspect="Fill"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                Source="{Binding HostTriggerEventModeDisabledBarcode}" />
+
+            <Label
+                FontSize="Micro"
+                HorizontalOptions="Center"
+                Text="Host trigger event mode disabled"
+                TextColor="DarkGray" />
+        </VerticalStackLayout>
+
+        <Image
+            Grid.Row="4"
+            Grid.Column="0"
+            HorizontalOptions="Center"
+            VerticalOptions="Start">
+            <Image.Source>
+                <FontImageSource
+                    FontFamily="MaterialFontFamily"
+                    Glyph="{OnPlatform Android={x:Static app:MaterialDesignIcons.Numeric2CircleOutline},
+                                       iOS={x:Static app:MaterialDesignIcons.Numeric3CircleOutline}}"
+                    Size="40"
+                    Color="Black" />
+            </Image.Source>
+        </Image>
+
+        <VerticalStackLayout
+            Grid.Row="4"
+            Grid.Column="2"
+            Margin="0"
+            Padding="0">
+            <Image
+                Aspect="Fill"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                Source="{Binding PairingBarcode}" />
+
+            <Label
+                FontSize="Micro"
+                HorizontalOptions="Center"
+                TextColor="DarkGray">
+                <Label.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsMacAddressRequired}"
+                        TargetType="Label"
+                        Value="false">
+                        <Setter Property="Text" Value="Pairing" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding IsMacAddressRequired}"
+                        TargetType="Label"
+                        Value="true">
+                        <Setter Property="Text" Value="{Binding MacAddress, Converter={StaticResource MacAddressConverter}, StringFormat='Pairing {0}'}" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+        </VerticalStackLayout>
+
+        <Label
+            Grid.Row="5"
+            Grid.Column="2"
+            FontSize="Micro"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsMacAddressRequired}"
+            Text="Tap here to reenter bluetooth address"
+            TextColor="DarkGray">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding UpdateBluetoothAddressCommand}" NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Button
+            x:Name="CancelButton"
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Padding="10"
+            Command="{Binding CancelButtonCommand}"
+            CornerRadius="10"
+            Text="Cancel" />
+    </Grid>
+</toolkit:Popup>

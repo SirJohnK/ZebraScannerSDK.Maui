@@ -14,15 +14,24 @@ namespace ZebraScannerSDK.Maui.Sample
                 .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
+                    fonts.AddFont("materialdesignicons-webfont.ttf", "MaterialFontFamily");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
             //Add Services
             builder.Services.AddZebraScannerSDK();
+            builder.Services.AddSingleton<IZebraScannerManager, ZebraScannerManager>();
 
             //Add Views
-            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainView>();
+
+            //Add ViewModels
+            builder.Services.AddTransient<MainViewModel>();
+
+            //Add Popups
+            builder.Services.AddTransientPopup<ScannerPairingPopupView, ScannerPairingPopupViewModel>();
+            builder.Services.AddTransientPopup<BluetoothAddressPopupView, BluetoothAddressPopupViewModel>();
 
 #if DEBUG
             builder.Logging.AddDebug();
