@@ -14,7 +14,7 @@ A couple of years ago, when upgrading a [Xamarin](https://dotnet.microsoft.com/e
 ## What's included?
 Compared to the original solution we have some enhanced and added features:
 - One easy to use NuGet package.
-- Easy setup with builder pattern extension.
+- Easy setup with service collection extension.
 - New `IScannerSDK` interface registered for constructor injection with DI.
 
 ## Setup
