@@ -6,6 +6,7 @@
     <IsBindingProject>true</IsBindingProject>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoBindingEmbedding>true</NoBindingEmbedding>
+    <CompressBindingResourcePackage>false</CompressBindingResourcePackage>
   </PropertyGroup>
 
   <ItemGroup>
