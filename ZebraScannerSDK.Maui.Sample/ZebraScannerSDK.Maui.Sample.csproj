@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-ios;net9.0-android</TargetFrameworks>
+		<TargetFrameworks>net10.0-ios;net10.0-android</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>ZebraScannerSDK.Maui.Sample</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -31,6 +31,11 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)'=='net10.0-ios'">
+	  <CodesignKey>Apple Development: Created via API (LA77A86HY2)</CodesignKey>
+	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -51,29 +56,14 @@
 
 	<ItemGroup>
 		<PackageReference Include="AsyncAwaitBestPractices" Version="10.0.0" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="12.3.0" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.2" />
-    <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="14.1.1" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.70" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\ZebraScannerSDK.Maui\ZebraScannerSDK.Maui.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Views\MainView.xaml.cs">
-	    <DependentUpon>MainView.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Views\ScannerPairingPopupView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\BluetoothAddressPopupView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
